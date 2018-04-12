@@ -1,7 +1,8 @@
+ALTER DATABASE mentorshipData CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-
-
-
+DROP TABLE IF EXISTS message;
+DROP TABLE IF EXISTS eval;
+DROP TABLE IF EXISTS profile;
 
 CREATE TABLE profile (
 	-- this creates the attribute for the primary key
@@ -12,7 +13,7 @@ CREATE TABLE profile (
 	-- to make something optional, exclude the not null
 	profileLocation VARCHAR (128) NOT NULL,
 	profileDateJoined VARCHAR (128) NOT NULL,
-	profileAge TINYINT,
+	profileAge TINYINT(3),
 	profileGender VARCHAR (32),
 	profileAvail BIT(1) NOT NULL,
 	profilePhone VARCHAR(32),
