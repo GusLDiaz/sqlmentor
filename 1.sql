@@ -21,24 +21,28 @@ CREATE TABLE profile (
 	UNIQUE(profileEmail),
 	PRIMARY KEY(profileId)
 );
+
 CREATE TABLE eval (
 	evalId BINARY(16) NOT NULL,
 	evalFromId BINARY(16) NOT NULL,
 	evalToId BINARY(16) NOT NULL,
 	evalContent VARCHAR(140) NOT NULL,
 	evalDate DATETIME(6) NOT NULL,
+	INDEX(evalFromId),
+	INDEX(evalToId),
 	FOREIGN KEY(evalFromId) REFERENCES profile(profileId),
 	FOREIGN KEY(evalToId) REFERENCES profile(profileId),
 	PRIMARY KEY(evalId)
 );
 
 CREATE TABLE message (
-
 	messageId BINARY(16) NOT NULL,
 	messageFromId BINARY(16) NOT NULL,
 	messageToId BINARY(16) NOT NULL,
 	messageContent VARCHAR(280) NOT NULL,
 	messageDate DATETIME(6) NOT NULL,
+	INDEX(messageFromId),
+	INDEX(messageToId),
 	FOREIGN KEY(messageFromId) REFERENCES profile(profileId),
 	FOREIGN KEY(messageToId) REFERENCES profile(profileId),
 	PRIMARY KEY(messageId)
